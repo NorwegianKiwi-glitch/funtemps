@@ -1,3 +1,3 @@
-module example.com/m/v2
+module Funtemps
 
 go 1.19
