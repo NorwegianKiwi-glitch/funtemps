@@ -67,11 +67,45 @@ func main() {
 	    funksjonene Float64Var og StringVar
 	*/
 
+	// Her er noen eksempler du kan bruke i den manuelle testingen
+	fmt.Println(fahr, out, funfacts)
+
+	fmt.Println("len(flag.Args())", len(flag.Args()))
+	fmt.Println("flag.NFlag()", flag.NFlag())
+
+	fmt.Println(isFlagPassed("out"))
+
 	// Eksempel på enkel logikk
+	// FahrenheitToCelsius
 	if out == "C" && isFlagPassed("F") {
 		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
 		// skal returnere °C
 		fmt.Println("0°F er -17.78°C")
+	}
+
+	// CelsiusToFahrenheit
+	if out == "F" && isFlagPassed("C") {
+		fmt.Println("0°C er 32°C")
+	}
+
+	// CelsiusToKelvin
+	if out == "K" && isFlagPassed("C") {
+		fmt.Println("0°C er 273.15°C")
+	}
+
+	// KelvinToCelsius
+	if out == "C" && isFlagPassed("K") {
+		fmt.Println("0°K er -273.15°C")
+	}
+
+	// FahrenheitToKelvin
+	if out == "K" && isFlagPassed("F") {
+		fmt.Println("0°F er 255.37222°K")
+	}
+
+	// KelvinToFahrenheit
+	if out == "F" && isFlagPassed("K") {
+		fmt.Println("0°K er -459.67°F")
 	}
 
 }
