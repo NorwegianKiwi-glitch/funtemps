@@ -3,6 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"math"
+
+	"github.com/NorwegianKiwi-glitch/funtemps/conv"
 )
 
 // Definerer flag-variablene i hoved-"scope"
@@ -75,12 +78,14 @@ func main() {
 
 	fmt.Println(isFlagPassed("out"))
 
-	// Eksempel på enkel logikk
-	// FahrenheitToCelsius
+	Erlik := "="
+	F := "°F"
+	C := "°C"
+	// K := "°K"
 	if out == "C" && isFlagPassed("F") {
-		// Kalle opp funksjonen FahrenheitToCelsius(fahr), som da
-		// skal returnere °C
-		fmt.Println("0°F er -17.78°C")
+		var svar float64
+		svar = math.Round(conv.FarhenheitToCelsius(fahr))
+		fmt.Printf("%.9g %s %s %.4f %s", fahr, F, Erlik, svar, C) // fahr, F, Erlik, svar, C
 	}
 
 	// CelsiusToFahrenheit
@@ -90,22 +95,23 @@ func main() {
 
 	// CelsiusToKelvin
 	if out == "K" && isFlagPassed("C") {
-		fmt.Println("0°C er 273.15°C")
+		fmt.Println(conv.CelsiusToKelvin(celsius))
 	}
 
 	// KelvinToCelsius
 	if out == "C" && isFlagPassed("K") {
-		fmt.Println("0°K er -273.15°C")
+		fmt.Println(conv.
+			KelvinToCelsius(kelvin))
 	}
 
 	// FahrenheitToKelvin
 	if out == "K" && isFlagPassed("F") {
-		fmt.Println("0°F er 255.37222°K")
+		fmt.Println(conv.FarhenheitToKelvin(fahr))
 	}
 
 	// KelvinToFahrenheit
 	if out == "F" && isFlagPassed("K") {
-		fmt.Println("0°K er -459.67°F")
+		fmt.Println(conv.KelvinToFarenheit(kelvin))
 	}
 
 }
