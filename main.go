@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"math"
 
 	"github.com/NorwegianKiwi-glitch/funtemps/conv"
 )
@@ -81,37 +80,80 @@ func main() {
 	Erlik := "="
 	F := "°F"
 	C := "°C"
-	// K := "°K"
+	K := "°K"
+
+	var Svar float64
+
+	// FahrenheitToCelsius
 	if out == "C" && isFlagPassed("F") {
-		var svar float64
-		svar = math.Round(conv.FarhenheitToCelsius(fahr))
-		fmt.Printf("%.9g %s %s %.4f %s", fahr, F, Erlik, svar, C) // fahr, F, Erlik, svar, C
+		Svar = conv.FarhenheitToCelsius(fahr)
+
+		fmt.Printf("%.9g %s %s ", fahr, F, Erlik)
+		if Svar == float64(int(Svar)) {
+			fmt.Printf("%d %s\n", int(Svar), C) // Printer hvis svaret er et heltall
+		} else {
+			fmt.Printf("%.2f %s\n", Svar, C) // Printer hvis svaret er et desimaltall
+		}
 	}
 
 	// CelsiusToFahrenheit
 	if out == "F" && isFlagPassed("C") {
-		fmt.Println("0°C er 32°C")
+		Svar = conv.CelsiusToFarenheit(celsius)
+
+		fmt.Printf("%.9g %s %s ", celsius, C, Erlik)
+		if Svar == float64(int(Svar)) {
+			fmt.Printf("%d %s\n", int(Svar), F)
+		} else {
+			fmt.Printf("%.2f %s\n", Svar, F)
+		}
 	}
 
 	// CelsiusToKelvin
 	if out == "K" && isFlagPassed("C") {
-		fmt.Println(conv.CelsiusToKelvin(celsius))
+		Svar = conv.CelsiusToKelvin(celsius)
+
+		fmt.Printf("%.9g %s %s ", celsius, C, Erlik)
+		if Svar == float64(int(Svar)) {
+			fmt.Printf("%d %s\n", int(Svar), K)
+		} else {
+			fmt.Printf("%.2f %s\n", Svar, K)
+		}
 	}
 
 	// KelvinToCelsius
 	if out == "C" && isFlagPassed("K") {
-		fmt.Println(conv.
-			KelvinToCelsius(kelvin))
+		Svar = conv.KelvinToCelsius(kelvin)
+
+		fmt.Printf("%.9g %s %s ", kelvin, K, Erlik)
+		if Svar == float64(int(Svar)) {
+			fmt.Printf("%d %s\n", int(Svar), C)
+		} else {
+			fmt.Printf("%.2f %s\n", Svar, C)
+		}
 	}
 
 	// FahrenheitToKelvin
 	if out == "K" && isFlagPassed("F") {
-		fmt.Println(conv.FarhenheitToKelvin(fahr))
+		Svar = conv.FarhenheitToKelvin(fahr)
+
+		fmt.Printf("%.9g %s %s ", fahr, F, Erlik)
+		if Svar == float64(int(Svar)) {
+			fmt.Printf("%d %s\n", int(Svar), K)
+		} else {
+			fmt.Printf("%.2f %s\n", Svar, K)
+		}
 	}
 
 	// KelvinToFahrenheit
 	if out == "F" && isFlagPassed("K") {
-		fmt.Println(conv.KelvinToFarenheit(kelvin))
+		Svar = conv.FarhenheitToCelsius(kelvin)
+
+		fmt.Printf("%.9g %s %s ", kelvin, K, Erlik)
+		if Svar == float64(int(Svar)) {
+			fmt.Printf("%d %s\n", int(Svar), F)
+		} else {
+			fmt.Printf("%.2f %s\n", Svar, F)
+		}
 	}
 
 }

@@ -38,5 +38,5 @@ func FarhenheitToKelvin(value float64) float64 {
 }
 
 func KelvinToFarenheit(value float64) float64 {
-	return (value-273.15)*(9/5) + 32
+	return (value-273.15)*1.8 + 32
 }
