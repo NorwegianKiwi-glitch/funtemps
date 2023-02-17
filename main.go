@@ -70,7 +70,6 @@ func main() {
 	// FahrenheitToCelsius
 	if out == "C" && isFlagPassed("F") {
 		Svar = conv.FarhenheitToCelsius(fahr)
-
 		fmt.Printf("%.9g%s %s ", fahr, F, Erlik)
 		if Svar == float64(int(Svar)) {
 			fmt.Printf("%s %s\n", addSpaces(strconv.Itoa(int(Svar))), C)
@@ -82,7 +81,6 @@ func main() {
 	// CelsiusToFahrenheit
 	if out == "F" && isFlagPassed("C") {
 		Svar = conv.CelsiusToFarenheit(celsius)
-
 		fmt.Printf("%.9g %s %s ", celsius, C, Erlik)
 		if Svar == float64(int(Svar)) {
 			fmt.Printf("%d %s\n", int(Svar), F)
@@ -94,7 +92,6 @@ func main() {
 	// CelsiusToKelvin
 	if out == "K" && isFlagPassed("C") {
 		Svar = conv.CelsiusToKelvin(celsius)
-
 		fmt.Printf("%.9g %s %s ", celsius, C, Erlik)
 		if Svar == float64(int(Svar)) {
 			fmt.Printf("%d %s\n", int(Svar), K)
@@ -106,7 +103,6 @@ func main() {
 	// KelvinToCelsius
 	if out == "C" && isFlagPassed("K") {
 		Svar = conv.KelvinToCelsius(kelvin)
-
 		fmt.Printf("%.9g %s %s ", kelvin, K, Erlik)
 		if Svar == float64(int(Svar)) {
 			fmt.Printf("%d %s\n", int(Svar), C)
@@ -118,7 +114,6 @@ func main() {
 	// FahrenheitToKelvin
 	if out == "K" && isFlagPassed("F") {
 		Svar = conv.FarhenheitToKelvin(fahr)
-
 		fmt.Printf("%.9g %s %s ", fahr, F, Erlik)
 		if Svar == float64(int(Svar)) {
 			fmt.Printf("%d %s\n", int(Svar), K)
@@ -130,7 +125,6 @@ func main() {
 	// KelvinToFahrenheit
 	if out == "F" && isFlagPassed("K") {
 		Svar = conv.FarhenheitToCelsius(kelvin)
-
 		fmt.Printf("%.9g %s %s ", kelvin, K, Erlik)
 		if Svar == float64(int(Svar)) {
 			fmt.Printf("%d %s\n", int(Svar), F)
