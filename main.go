@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
+	"strconv"
 
 	"github.com/NorwegianKiwi-glitch/funtemps/conv"
 )
@@ -13,19 +15,13 @@ var celsius float64
 var kelvin float64
 
 var out string
+var Svar float64
 var funfacts string
 var funfactsunit string
 
 // Bruker init (som anbefalt i dokumentasjonen) for å sikre at flagvariablene
 // er initialisert.
 func init() {
-
-	/*
-	   Her er eksempler på hvordan man implementerer parsing av flagg.
-	   For eksempel, kommando
-	       funtemps -F 0 -out C
-	   skal returnere output: 0°F er -17.78°C
-	*/
 
 	// Definerer og initialiserer flagg-variablene
 	flag.Float64Var(&fahr, "F", 0.0, "temperatur i grader fahrenheit")
@@ -42,32 +38,21 @@ func init() {
 
 }
 
+func addSpaces(s string) string { // legger til mellomrom mellom hvert 3 siffer
+	var buf bytes.Buffer
+	n := len(s)
+	for i, c := range s {
+		buf.WriteRune(c)
+		if i != n-1 && (n-i-1)%3 == 0 {
+			buf.WriteRune(' ')
+		}
+	}
+	return buf.String()
+}
+
 func main() {
 
 	flag.Parse()
-
-	/**
-	    Her må logikken for flaggene og kall til funksjoner fra conv og funfacts
-	    pakkene implementeres.
-
-	    Det er anbefalt å sette opp en tabell med alle mulige kombinasjoner
-	    av flagg. flag-pakken har funksjoner som man kan bruke for å teste
-	    hvor mange flagg og argumenter er spesifisert på kommandolinje.
-
-	        fmt.Println("len(flag.Args())", len(flag.Args()))
-			    fmt.Println("flag.NFlag()", flag.NFlag())
-
-	    Enkelte kombinasjoner skal ikke være gyldige og da må kontrollstrukturer
-	    brukes for å utelukke ugyldige kombinasjoner:
-	    -F, -C, -K kan ikke brukes samtidig
-	    disse tre kan brukes med -out, men ikke med -funfacts
-	    -funfacts kan brukes kun med -t
-	    ...
-	    Jobb deg gjennom alle tilfellene. Vær obs på at det er en del sjekk
-	    implementert i flag-pakken og at den vil skrive ut "Usage" med
-	    beskrivelsene av flagg-variablene, som angitt i parameter fire til
-	    funksjonene Float64Var og StringVar
-	*/
 
 	// Her er noen eksempler du kan bruke i den manuelle testingen
 	fmt.Println(fahr, out, funfacts)
@@ -82,17 +67,15 @@ func main() {
 	C := "°C"
 	K := "°K"
 
-	var Svar float64
-
 	// FahrenheitToCelsius
 	if out == "C" && isFlagPassed("F") {
 		Svar = conv.FarhenheitToCelsius(fahr)
 
-		fmt.Printf("%.9g %s %s ", fahr, F, Erlik)
+		fmt.Printf("%.9g%s %s ", fahr, F, Erlik)
 		if Svar == float64(int(Svar)) {
-			fmt.Printf("%d %s\n", int(Svar), C) // Printer hvis svaret er et heltall
+			fmt.Printf("%s %s\n", addSpaces(strconv.Itoa(int(Svar))), C)
 		} else {
-			fmt.Printf("%.2f %s\n", Svar, C) // Printer hvis svaret er et desimaltall
+			fmt.Printf("%s %s\n", addSpaces(strconv.FormatFloat(Svar, 'f', 2, 64)), C)
 		}
 	}
 
