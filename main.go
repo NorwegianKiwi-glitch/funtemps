@@ -114,30 +114,30 @@ func main() {
 			fmt.Printf("%s %s\n", addSpaces(strconv.FormatFloat(Svar, 'f', 2, 64)), C)
 		}
 
-	// FahrenheitToKelvin
-	if out == "K" && isFlagPassed("F") {
-		Svar = conv.FarhenheitToKelvin(fahr)
+		// FahrenheitToKelvin
+		if out == "K" && isFlagPassed("F") {
+			Svar = conv.FarhenheitToKelvin(fahr)
 
-		fmt.Printf("%.12g %s %s ", fahr, F, Erlik)
-		if Svar == float64(int(Svar)) {
-			fmt.Printf("%s %s\n", addSpaces(strconv.Itoa(int(Svar))), K)
-		} else {
-			fmt.Printf("%s %s\n", addSpaces(strconv.FormatFloat(Svar, 'f', 2, 64)), K)
+			fmt.Printf("%.12g %s %s ", fahr, F, Erlik)
+			if Svar == float64(int(Svar)) {
+				fmt.Printf("%s %s\n", addSpaces(strconv.Itoa(int(Svar))), K)
+			} else {
+				fmt.Printf("%s %s\n", addSpaces(strconv.FormatFloat(Svar, 'f', 2, 64)), K)
+			}
+		}
+
+		// KelvinToFahrenheit
+		if out == "F" && isFlagPassed("K") {
+			Svar = conv.FarhenheitToCelsius(kelvin)
+
+			fmt.Printf("%.12g %s %s ", kelvin, K, Erlik)
+			if Svar == float64(int(Svar)) {
+				fmt.Printf("%s %s\n", addSpaces(strconv.Itoa(int(Svar))), F)
+			} else {
+				fmt.Printf("%s %s\n", addSpaces(strconv.FormatFloat(Svar, 'f', 2, 64)), F)
+			}
 		}
 	}
-
-	// KelvinToFahrenheit
-	if out == "F" && isFlagPassed("K") {
-		Svar = conv.FarhenheitToCelsius(kelvin)
-
-		fmt.Printf("%.12g %s %s ", kelvin, K, Erlik)
-		if Svar == float64(int(Svar)) {
-			fmt.Printf("%s %s\n", addSpaces(strconv.Itoa(int(Svar))), F)
-		} else {
-			fmt.Printf("%s %s\n", addSpaces(strconv.FormatFloat(Svar, 'f', 2, 64)), F)
-		}
-	}
-
 }
 
 // Funksjonen sjekker om flagget er spesifisert på kommandolinje
