@@ -14,6 +14,13 @@ import (
 	kan du bruke malen som den er (du må selvsagt endre
 	funksjonsnavn og testverdier)
 */
+
+
+func Test() {
+	fmt.Println("Hello Go!")
+}
+
+
 func TestFarhenheitToCelsius(t *testing.T) {
 	type test struct {
 		input float64
