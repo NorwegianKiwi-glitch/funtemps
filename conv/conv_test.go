@@ -13,6 +13,13 @@ import (
 	kan du bruke malen som den er (du må selvsagt endre
 	funksjonsnavn og testverdier)
 */
+
+
+func Test() {
+	fmt.Println("Hello Go!")
+}
+
+
 func TestFarhenheitToCelsius(t *testing.T) {
 	type test struct {
 		input float64
@@ -41,7 +48,7 @@ func TestCelsiusToFarenheit(t *testing.T) {
 	}
 
 	tests := []test{
-		{input: 57, want: 89},
+		{input: 0, want: 32},
 	}
 
 	for _, tc := range tests {
