@@ -85,7 +85,7 @@ func main() {
 	if out == "C" && isFlagPassed("F") {
 		var svar float64
 		svar = math.Round(conv.FarhenheitToCelsius(fahr))
-		fmt.Printf("%.9g %s %s %.4f %s", fahr, F, Erlik, svar, C) // fahr, F, Erlik, svar, C
+		fmt.Printf("%.9g %s %s %.2f %s", fahr, F, Erlik, svar, C) // fahr, F, Erlik, svar, C
 	}
 
 	// CelsiusToFahrenheit
